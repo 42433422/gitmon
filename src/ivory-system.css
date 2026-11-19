@@ -413,6 +413,102 @@ body::before, body::after { display: none; }
 .is-ivory .adv-on-note { color: #845641; background: #f6ece3; }
 .is-ivory .mode-switch button.active { color: white; background: var(--iv-deep); }
 
+/* BYOK details, status feedback, preview notes and documentation drawers. */
+.is-ivory .llm-custom, .is-ivory .llm-deep, .is-ivory .mode-switch button {
+  color: #303835;
+  background: #f3efe6;
+  border: 1px solid #d4ccbf;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .llm-custom summary { color: #555e55; }
+.is-ivory .llm-custom summary:hover { color: #95533b; }
+.is-ivory .llm-foot { border-color: #d3cabd; }
+.is-ivory .llm-clear, .is-ivory .llm-disable, .is-ivory .llm-close {
+  color: #303835;
+  background: #faf7f0;
+  border: 1px solid #c9c0b3;
+  border-radius: 0;
+}
+.is-ivory .llm-disable { color: #a24e41; border-color: #d5b5ab; }
+.is-ivory .llm-on {
+  color: #40704e;
+  background: #ebf2e9;
+  border: 1px solid #b6cbb6;
+  border-radius: 0;
+}
+.is-ivory .llm-bound-ok { color: #447654; }
+.is-ivory .llm-anchor { color: #936646; }
+.is-ivory .llm-bind-status.busy { color: #875a37; }
+.is-ivory .llm-bind-status.ok { color: #457454; }
+.is-ivory .llm-bind-status.error { color: #a24c42; }
+.is-ivory .adv-btn.on {
+  border-color: #bb856e;
+  color: #965339;
+  background: #f1e6db;
+  box-shadow: none;
+}
+.is-ivory .adv-dot.ok { background: #5b8768; box-shadow: none; }
+.is-ivory .mode-switch button.active { background: #303835; border-color: #303835; color: #fffaf2; box-shadow: none; }
+.is-ivory .ai-tag {
+  border: 1px solid #bf967c;
+  background: #efe4d7;
+  color: #96583e;
+  border-radius: 0;
+}
+.is-ivory .ai-note {
+  background: #f7efe3;
+  border: 1px solid #d6c5b4;
+  border-left: 3px solid #b77a58;
+  border-radius: 0;
+  color: #685c4d;
+}
+.is-ivory .ai-note b { color: #95563c; }
+.is-ivory .ai-note .ai-comment { color: #4e594f; }
+.is-ivory .ai-note .ai-warn { color: #9e5140; }
+.is-ivory .manual-head { color: #303835; }
+.is-ivory .manual-head:hover { background: #f1ece2; border-color: #b98e74 !important; }
+.is-ivory .manual-title small { color: #757b71; }
+.is-ivory .manual-peek {
+  background: #f9f6ee;
+  border: 1px solid #d2cbbf;
+  color: #697269;
+}
+.is-ivory .manual-tab.active {
+  background: #303835;
+  border-color: #303835 !important;
+  color: #fffaf2;
+  box-shadow: none;
+}
+.is-ivory .manual-tab.active i { color: #dfc2ae; }
+.is-ivory .manual-page h4 { color: #92533b; }
+.is-ivory .manual-page code { color: #854d35; background: #efe8dd; }
+.is-ivory .manual-tiers > div {
+  background: #f2eee5;
+  border: 1px solid #d2c9bc;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .manual-tiers b { color: #92583d; }
+.is-ivory .manual-tiers em { color: #72796e; }
+.is-ivory .manual-tip { background: #f5ece1; border-left-color: #b57958; }
+.is-ivory .grow .exp-bar { background: #e6dfd3; border-radius: 0; }
+.is-ivory .grow .exp-bar div { background: linear-gradient(90deg, #72917d, #bb886a); }
+.is-ivory .grow .task {
+  background: #f6f2e9;
+  border: 1px solid #d8cfc1;
+  border-radius: 0;
+  color: #303835;
+}
+.is-ivory .grow .task button {
+  background: #faf8f2;
+  border: 1px solid #c9c1b4;
+  border-radius: 0;
+  color: #4d574e;
+}
+.is-ivory .grow .task button:hover:not(:disabled) { color: #99553b; border-color: #b78265; }
+.is-ivory .grow .task-xp { color: #a06345; }
+
 /* Archive and inventory: preserve actual quality colors on collectible cards. */
 .is-ivory .collection-item, .is-ivory .warehouse-empty {
   background: #fcfaf5;
