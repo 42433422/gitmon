@@ -325,6 +325,85 @@
 .is-ivory .battle-stage .picker-card.picked { border-color: #a75f43; box-shadow: inset 0 0 0 2px rgba(167,95,67,.12); }
 .is-ivory .battle-stage .picker-info b { color: #303835; }
 
+/* Battle configuration, auto-loop and settlement are first-party pages too. */
+.is-ivory .battle-stage .picker-head h2 {
+  color: #303835;
+  font: 800 clamp(24px, 3vw, 33px)/1.2 var(--font-pixel);
+  letter-spacing: -.025em;
+}
+.is-ivory .battle-stage .mode-card,
+.is-ivory .battle-stage .picker-channel,
+.is-ivory .battle-stage .auto-status,
+.is-ivory .battle-stage .audit-report {
+  background: #fbf9f4;
+  color: #303835;
+  border: 1px solid #d0c8bb;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .battle-stage .mode-card { border-left: 4px solid #a96747; }
+.is-ivory .battle-stage .mode-title { color: #303835; }
+.is-ivory .battle-stage .mode-desc { color: #6c766d; }
+.is-ivory .battle-stage .picker-channel button { border-radius: 0; color: #707a70; }
+.is-ivory .battle-stage .picker-channel button.on {
+  background: #303835;
+  color: #fffaf2;
+  box-shadow: none;
+}
+.is-ivory .battle-stage .picker-channel button.on:last-child {
+  background: #745f83;
+  color: white;
+  box-shadow: none;
+}
+.is-ivory .battle-stage .auto-unit b,
+.is-ivory .battle-stage .result-stats b { color: #303835; }
+.is-ivory .battle-stage .auto-unit small { color: #717a71; }
+.is-ivory .battle-stage .auto-vs { color: #a96747; font-family: var(--font-arcade); }
+.is-ivory .battle-stage .battle-side-actions .ghost-btn {
+  background: #fcfaf4;
+  color: #303835;
+  border: 1px solid #c9bfb2;
+  border-radius: 0;
+}
+.is-ivory .battle-stage .battle-side-actions .ghost-btn:hover {
+  color: #955239;
+  border-color: #a96747;
+}
+.is-ivory .battle-stage .result-grade {
+  border-color: #c39b71;
+  background: #f0e7db;
+  box-shadow: none;
+}
+.is-ivory .battle-stage .result-grade b { color: #93623e; text-shadow: none; }
+.is-ivory .battle-stage .result-grade small { color: #705b45; }
+.is-ivory .battle-stage .result-card .actions :is(.primary-btn, .ghost-btn) {
+  border: 1px solid #303835;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .battle-stage .result-card .actions .primary-btn { background: #303835; color: #fffaf2; }
+.is-ivory .battle-stage .result-card .actions .ghost-btn { background: #f9f6ef; color: #303835; }
+.is-ivory .battle-stage .move-banner {
+  background: #fbf9f4;
+  color: #303835;
+  border: 1px solid #b98b6a;
+  box-shadow: 0 8px 22px rgba(42, 45, 38, .14);
+  text-shadow: none;
+}
+.is-ivory .battle-stage .audit-head { border-bottom: 1px solid #d4cabb; }
+.is-ivory .battle-stage .audit-head h3,
+.is-ivory .battle-stage .audit-sec h4 { color: #96573d; text-shadow: none; }
+.is-ivory .battle-stage .audit-sub,
+.is-ivory .battle-stage .audit-verdict,
+.is-ivory .battle-stage .dim-note { color: #667168; }
+.is-ivory .battle-stage .dim-name { color: #303835; }
+.is-ivory .battle-stage .dim-nums i { color: #7a857a; }
+.is-ivory .battle-stage .audit-sec li { color: #4e5a51; }
+.is-ivory .battle-stage .audit-dim .dim-track { background: #e7e0d4; box-shadow: none; }
+.is-ivory .battle-stage .audit-actions { border-top: 1px solid #d0c8bb; }
+.is-ivory .battle-stage .audit-tip { color: #477756; }
+.is-ivory .battle-stage .ai-error-bar { background: #f8e9e4; border-color: #b86e5b; color: #8f4738; }
+
 /* Story planning and mission reports. Story cinematics keep their artwork. */
 .is-ivory .story-wrap {
   --st-ink: #f1eee6;
@@ -470,6 +549,21 @@
 .is-ivory .story-model-warn { border-left: 4px solid #b7845f; color: #895a39; }
 .is-ivory .story-error { color: #a54842; }
 .is-ivory .story-busy, .is-ivory .story-empty { color: #69756b; }
+
+/* Remaining story cards and report labels must contrast against paper surfaces. */
+.is-ivory .story-pack b,
+.is-ivory .story-script b,
+.is-ivory .story-ending h3 { color: #303835; text-shadow: none; }
+.is-ivory .story-pack.sel,
+.is-ivory .story-script.sel { border-color: #a96747; background: #f3e9df; }
+.is-ivory .story-pack-kind,
+.is-ivory .story-script-desc,
+.is-ivory .story-custom-note,
+.is-ivory .story-voice-note { color: #6a756c; }
+.is-ivory .story-script > .story-script-flag,
+.is-ivory .story-script > .story-script-bridge { color: #966042; }
+.is-ivory .story-ending p { color: #5a685d; }
+.is-ivory .story-dialog:focus-visible { outline: 3px solid #a96747; outline-offset: 2px; }
 
 /* Embedded pixel game: skin its shell and controls, never recolor 320x208 canvas. */
 .is-ivory .ck-root, .ck-root {
