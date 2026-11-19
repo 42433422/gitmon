@@ -53,10 +53,27 @@ import './training.css'
 import './vault.css'
 import './quest.css'
 import './home/ivory-terminal.css'
+import './ivory-system.css'
+import './ivory-scenes.css'
 
 const packKey = (pet) => pet.id || pet.fullName
 
 // 单个项目：一个卡包
+// 所有一方页面复用同一条战术终端路径标识，逻辑和导航仍沿用原状态机。
+const PAGE_SECTIONS = {
+  warehouse: { code: '02', zh: '精灵仓库', en: 'CREATURE VAULT' },
+  scan: { code: '01', zh: '仓库分析', en: 'REPOSITORY SCAN' },
+  box: { code: '03', zh: '卡箱档案', en: 'PACK ARCHIVE' },
+  reveal: { code: '04', zh: '精灵登场', en: 'CREATURE REVEAL' },
+  detail: { code: '05', zh: '档案详情', en: 'CREATURE DOSSIER' },
+  battle: { code: '06', zh: '竞技场', en: 'BATTLE TERMINAL' },
+  training: { code: '07', zh: '训练场', en: 'TRAINING TERMINAL' },
+  leaderboard: { code: '08', zh: '排行榜', en: 'LEADERBOARD' },
+  quest: { code: '09', zh: '任务板', en: 'MISSION BOARD' },
+  settings: { code: '10', zh: '设置', en: 'SYSTEM SETTINGS' },
+  story: { code: '11', zh: '剧情模式', en: 'STORY TERMINAL' },
+}
+
 const STEPS = {
   zh: ['连接仓库', '读取技术栈', '估算工程量', '评估代码质量'],
   en: ['Connect repo', 'Read tech stack', 'Estimate size', 'Assess code quality'],
@@ -1268,7 +1285,7 @@ export default function App() {
   const storyReady = storyBinding && storyKey && storyCast.length > 0
 
   return (
-    <div className={`app${view === 'pack' ? ' is-packing' : ''}${view === 'home' ? ' is-command-deck' : ''}`}>
+    <div className={`app is-ivory is-view-${view}${view === 'pack' ? ' is-packing' : ''}${view === 'home' ? ' is-command-deck' : ''}`}>
       {storyNotice && (
         <button className="story-toast" onClick={() => setStoryNotice('')}>{storyNotice}</button>
       )}
@@ -1375,6 +1392,15 @@ export default function App() {
       {showBack && (
         <div className="topbar-back-row">
           <button className="topbar-back" onClick={goBack} title={t('返回', 'Back')}>{t('← 返回', '← Back')}</button>
+        </div>
+      )}
+      {PAGE_SECTIONS[view] && (
+        <div className="ivory-route-strip" aria-hidden="true">
+          <span className="ivory-route-mark">G / M</span>
+          <span>OPERATIONS</span>
+          <em>{PAGE_SECTIONS[view].code}</em>
+          <b>{t(PAGE_SECTIONS[view].zh, PAGE_SECTIONS[view].en)}</b>
+          <span className="ivory-route-right">GITMON / ARCHIVE TERMINAL</span>
         </div>
       )}
 
