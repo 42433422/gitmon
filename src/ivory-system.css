@@ -1,0 +1,722 @@
+/*
+ * GitMon / Ivory Design System
+ * First-party React frontend only. Reuses existing controls and visual assets.
+ * Scoped by .is-ivory so effects inside collectible artwork are not repainted.
+ */
+:root {
+  color-scheme: light;
+}
+body {
+  background: #f1eee6;
+  color: #282d2b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body::before, body::after { display: none; }
+::selection { background: #dfbda7; color: #282d2b; }
+
+.app.is-ivory {
+  --bg: #f1eee6;
+  --bg-2: #e9e4d9;
+  --panel: #fbf9f4;
+  --line: #d2cbbf;
+  --text: #292f2b;
+  --dim: #69736d;
+  --accent: #a75f43;
+  --px-bg: #f1eee6;
+  --px-line: #d2cbbf;
+  --px-shadow: rgba(38, 45, 41, .055);
+  --font-pixel: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-arcade: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --iv-ink: #292f2b;
+  --iv-surface: #fbf9f4;
+  --iv-paper: #f1eee6;
+  --iv-muted: #69736d;
+  --iv-edge: #d2cbbf;
+  --iv-rust: #a75f43;
+  --iv-deep: #303835;
+  --iv-ok: #4d795d;
+  --iv-danger: #ab4b3a;
+  --iv-shadow: 0 12px 32px -25px rgba(45, 45, 36, .35);
+  max-width: none;
+  min-height: 100vh;
+  padding: 0;
+  background: var(--iv-paper);
+  color: var(--iv-ink);
+  font-family: var(--font-pixel);
+  letter-spacing: .01em;
+  -webkit-font-smoothing: antialiased;
+}
+.is-ivory,
+.is-ivory button,
+.is-ivory input,
+.is-ivory select,
+.is-ivory textarea { font-family: var(--font-pixel); }
+.is-ivory :is(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid #a75f43;
+  outline-offset: 3px;
+}
+.is-ivory :is(button, input, select, textarea):disabled { cursor: not-allowed; opacity: .53; }
+.is-ivory a { text-underline-offset: 3px; }
+.is-ivory code, .is-ivory kbd { font-family: var(--font-arcade); }
+.is-ivory > main:not(.home--stage),
+.is-ivory > .story-wrap,
+.is-ivory > .quest-wrap,
+.is-ivory > .leaderboard,
+.is-ivory > .training-stage,
+.is-ivory > .box-stage,
+.is-ivory > .hp-stage {
+  width: min(100%, 1360px);
+  margin-inline: auto;
+  min-width: 0;
+}
+.is-ivory > main:not(.home--stage) { padding: 30px clamp(16px, 4vw, 58px) 66px; }
+.is-ivory .topbar-back-row { max-width: 1360px; margin: 0 auto; padding: 16px clamp(16px, 4vw, 58px) 0; }
+.is-ivory .topbar-back {
+  min-height: 38px;
+  padding: 8px 15px;
+  border: 1px solid #c9c1b4;
+  border-radius: 0;
+  background: #fcfaf4;
+  color: var(--iv-ink);
+  box-shadow: none;
+  font-size: 12px;
+}
+.is-ivory .topbar-back:hover { border-color: var(--iv-rust); color: #9f543a; }
+.is-ivory:not(.is-command-deck) .topbar {
+  position: sticky;
+  z-index: 40;
+  top: 0;
+  background: rgba(250, 248, 241, .96);
+  border-bottom: 1px solid var(--iv-edge);
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+.is-ivory:not(.is-command-deck) .topbar-inner {
+  max-width: none;
+  min-height: 74px;
+  height: auto;
+  padding: 0 clamp(18px, 3vw, 58px);
+}
+.is-ivory:not(.is-command-deck) .logo {
+  background: none;
+  color: var(--iv-ink);
+  font-family: var(--font-pixel);
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -.05em;
+  text-shadow: none;
+  animation: none;
+}
+.is-ivory:not(.is-command-deck) .tagline { color: var(--iv-muted); font-size: 11px; }
+.is-ivory:not(.is-command-deck) .nav-tab {
+  background: transparent;
+  color: #656d67;
+  font-family: var(--font-pixel);
+  height: 74px;
+  padding: 0 13px;
+  font-size: 12px;
+  border-radius: 0;
+}
+.is-ivory:not(.is-command-deck) .nav-tab:hover { background: #ede7dd; color: var(--iv-ink); }
+.is-ivory:not(.is-command-deck) .nav-tab.active {
+  background: #f0e5dc;
+  color: var(--iv-ink);
+}
+.is-ivory:not(.is-command-deck) .nav-tab.active::after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--iv-rust);
+  border-radius: 0;
+}
+.is-ivory:not(.is-command-deck) :is(.mute-btn, .gh-link, .adv-btn) {
+  margin-right: 0;
+  padding: 8px 11px;
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  background: #fdfaf4;
+  color: var(--iv-ink);
+  font: 600 11px/1.4 var(--font-pixel);
+  box-shadow: none;
+  text-decoration: none;
+}
+.is-ivory .user-chip { color: var(--iv-ink); border: 1px solid var(--iv-edge); background: #faf7f1; }
+.is-ivory .user-name { color: var(--iv-ink); }
+.is-ivory .user-src { border-color: var(--iv-edge); color: #5d665f; }
+.is-ivory .user-quota { color: #9d634b; }
+.is-ivory .user-out { color: #9f543a; }
+.is-ivory .footer {
+  margin-top: 24px;
+  padding: 24px clamp(16px, 3vw, 58px) 32px;
+  border-top: 1px solid var(--iv-edge);
+  color: #7c8279;
+  background: #efebe2;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: 400;
+  box-shadow: none;
+}
+
+/* Reusable surfaces, typography and actions. Leave card foil and sprite canvases untouched. */
+.is-ivory :is(.hero, .warehouse-empty, .account-hero, .grow, .manual-page, .manual-tab, .manual-head) {
+  border: 1px solid var(--iv-edge) !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  background: var(--iv-surface);
+  color: var(--iv-ink);
+  filter: none;
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .hero { padding: clamp(20px, 3vw, 36px); }
+.is-ivory .hero h2 {
+  color: var(--iv-ink);
+  font: 800 clamp(24px, 3vw, 35px)/1.2 var(--font-pixel);
+  letter-spacing: -.035em;
+  text-shadow: none;
+  padding: 0;
+}
+.is-ivory .hero :is(p, .hero-note) { color: var(--iv-muted); }
+.is-ivory .hero p b { color: #88523c; font-weight: 700; }
+.is-ivory :is(.section-head h3, .grow-head h3, .manual-head h3) {
+  color: var(--iv-ink);
+  font-family: var(--font-pixel);
+  font-size: 17px;
+  font-weight: 750;
+}
+.is-ivory .section-head h3::before { color: var(--iv-rust); }
+.is-ivory .count { color: var(--iv-muted); }
+.is-ivory .primary-btn,
+.is-ivory .ghost-btn,
+.is-ivory .input-row button,
+.is-ivory .reeval-btn,
+.is-ivory .mini-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 39px;
+  border: 1px solid var(--iv-deep);
+  border-image: none;
+  border-radius: 0;
+  padding: 8px 15px;
+  background: var(--iv-deep);
+  color: #fffaf2;
+  font: 700 12px/1.45 var(--font-pixel);
+  letter-spacing: .01em;
+  text-shadow: none;
+  image-rendering: auto;
+  box-shadow: none;
+  filter: none;
+  cursor: pointer;
+  transition: background .17s, border-color .17s, color .17s;
+}
+.is-ivory .ghost-btn, .is-ivory .mini-btn {
+  background: #fcfaf5;
+  border-color: #bab5a9;
+  color: var(--iv-ink);
+}
+.is-ivory :is(.primary-btn, .input-row button, .reeval-btn):hover:not(:disabled) {
+  transform: none;
+  translate: none;
+  filter: none;
+  background: var(--iv-rust);
+  border-color: var(--iv-rust);
+  color: white;
+}
+.is-ivory :is(.ghost-btn, .mini-btn):hover:not(:disabled) {
+  transform: none;
+  translate: none;
+  filter: none;
+  background: #f2ebe1;
+  border-color: var(--iv-rust);
+  color: #8c492f;
+}
+.is-ivory :is(.primary-btn, .ghost-btn, .mini-btn):disabled { opacity: .5; filter: none; }
+.is-ivory .input-row input,
+.is-ivory :is(input, select, textarea):not([type='range']):not([type='checkbox']):not([type='radio']) {
+  min-width: 0;
+  border: 1px solid #c9c1b4;
+  border-radius: 0;
+  background: #fffefa;
+  color: var(--iv-ink);
+  padding: 10px 13px;
+  box-shadow: none;
+  font-family: var(--font-pixel);
+}
+.is-ivory :is(input, select, textarea):not([type='range']):focus-visible {
+  border-color: #af6f51;
+  box-shadow: 0 0 0 3px rgba(167, 95, 67, .12);
+}
+.is-ivory input::placeholder, .is-ivory textarea::placeholder { color: #85877e; }
+.is-ivory .examples button {
+  background: #f0ece2;
+  border: 1px solid #d2cbbf;
+  border-radius: 0;
+  color: #606b63;
+  box-shadow: none;
+  font-size: 11px;
+}
+.is-ivory .examples button:hover { border-color: var(--iv-rust); color: #8d4d37; }
+.is-ivory .error, .is-ivory .reval-error { color: var(--iv-danger); }
+.is-ivory .quota-note button { color: #98533d; }
+
+/* Authentication: same paper palette, with high contrast provider buttons. */
+.is-ivory .auth-page { padding-top: 24px; gap: 18px; }
+.is-ivory .auth-card {
+  max-width: 850px;
+  margin-inline: auto;
+  padding: clamp(22px, 3vw, 42px);
+  border: 1px solid var(--iv-edge);
+  border-top: 4px solid var(--iv-deep);
+  border-radius: 0;
+  background: var(--iv-surface);
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .auth-card h2 {
+  color: var(--iv-ink);
+  font: 800 clamp(25px, 3vw, 36px)/1.2 var(--font-pixel);
+  letter-spacing: -.03em;
+}
+.is-ivory .auth-tag {
+  color: #94553d;
+  background: #f2ebe2;
+  border: 1px solid #d4c2b4;
+  border-radius: 0;
+  letter-spacing: .12em;
+}
+.is-ivory .auth-lead, .is-ivory .auth-hint { color: var(--iv-muted); }
+.is-ivory .auth-lead b { color: #874d37; }
+.is-ivory .auth-points > div,
+.is-ivory .auth-tabs,
+.is-ivory .auth-callback {
+  background: #f1ece2;
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--iv-muted);
+}
+.is-ivory .auth-points b { color: var(--iv-rust); }
+.is-ivory .auth-tab {
+  color: var(--iv-muted);
+  font-family: var(--font-pixel);
+  border-radius: 0;
+}
+.is-ivory .auth-tab:hover { color: var(--iv-ink); }
+.is-ivory .auth-tab.is-on { color: #fffaf2; background: var(--iv-deep); border-color: var(--iv-deep); }
+.is-ivory .auth-github, .is-ivory .auth-local {
+  background: var(--iv-deep);
+  border: 1px solid var(--iv-deep);
+  border-radius: 0;
+  color: #fffaf2;
+  box-shadow: none;
+}
+.is-ivory .auth-github.is-secondary, .is-ivory .auth-guest {
+  background: #f7f4ed;
+  color: var(--iv-ink);
+  border: 1px solid #c5beb2;
+  border-radius: 0;
+}
+.is-ivory .auth-github.is-gitee { color: white; background: #b94c43; border-color: #b94c43; }
+.is-ivory .auth-local-text em { color: #d5cfc4; }
+.is-ivory .auth-local-go { color: #e8c5a6; }
+.is-ivory .auth-warn { color: #845f36; background: #f7efe1; border-color: #d5bf94; }
+.is-ivory .auth-error { color: var(--iv-danger); }
+.is-ivory .auth-callback code { color: var(--iv-ink); }
+.is-ivory .auth-callback button { background: #fdfaf3; color: var(--iv-ink); border: 1px solid var(--iv-edge); }
+.is-ivory .auth-head-note, .is-ivory .auth-security { color: var(--iv-muted); }
+.is-ivory .auth-loading { color: var(--iv-muted); }
+
+/* Settings and BYOK panel. */
+.is-ivory .settings-page { max-width: 1160px; }
+.is-ivory .set-page-head { border-bottom: 2px solid var(--iv-deep); padding-bottom: 18px; }
+.is-ivory .set-page-head h1 {
+  color: var(--iv-ink);
+  font: 850 clamp(25px, 3vw, 38px)/1.2 var(--font-pixel);
+  letter-spacing: -.04em;
+  text-shadow: none;
+}
+.is-ivory .set-page-sub { color: var(--iv-muted); font-family: var(--font-pixel); }
+.is-ivory .set-tab {
+  background: #f9f7f1;
+  color: #687269;
+  border: 1px solid var(--iv-edge);
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--font-pixel);
+}
+.is-ivory .set-tab b { font-weight: 700; letter-spacing: 0; }
+.is-ivory .set-tab.active {
+  background: var(--iv-deep);
+  color: #fdfaf3;
+  border: 1px solid var(--iv-deep);
+  border-left: 3px solid var(--iv-rust);
+  box-shadow: none;
+}
+.is-ivory .set-tab:hover:not(.active) { border-color: #b68c70; color: #9d563d; }
+.is-ivory .set-panel {
+  background: var(--iv-surface);
+  border: 1px solid var(--iv-edge);
+  border-top: 4px solid #a75f43;
+  border-radius: 0;
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .set-block + .set-block { border-top-color: var(--iv-edge); }
+.is-ivory .set-block-title { color: var(--iv-ink); }
+.is-ivory .set-block-title em { color: var(--iv-muted); }
+.is-ivory .opt-row { color: var(--iv-muted); border-color: var(--iv-edge); }
+.is-ivory .set-toggle, .is-ivory .llm-bind-btn {
+  background: #faf8f1;
+  color: var(--iv-ink);
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+}
+.is-ivory .set-toggle.on {
+  background: var(--iv-deep);
+  color: #fff;
+  border-color: var(--iv-deep);
+}
+.is-ivory .llm-panel {
+  color: var(--iv-ink);
+  border: 1px solid var(--iv-edge);
+  border-top: 3px solid var(--iv-rust);
+  border-radius: 0;
+  background: #faf8f2;
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .llm-panel label > span, .is-ivory .llm-bind-status { color: var(--iv-muted); }
+.is-ivory .llm-badge, .is-ivory .llm-bound code {
+  border: 1px solid #c8a38c;
+  border-radius: 0;
+  color: #95563c;
+  background: #f1e8dc;
+}
+.is-ivory .llm-bound {
+  background: #edf2eb;
+  border: 1px solid #a7bda6;
+  border-radius: 0;
+  color: #3d634a;
+}
+.is-ivory .llm-bound strong { color: #3b6e50; }
+.is-ivory .llm-model-select { color: var(--iv-ink); background: #fffefa; }
+.is-ivory .llm-model-select option { background: #fffefa; color: var(--iv-ink); }
+.is-ivory .llm-fetch { border-color: #c7aa91; color: #93553a; }
+.is-ivory .adv-pop {
+  border: 1px solid var(--iv-edge);
+  background: var(--iv-surface);
+  color: var(--iv-ink);
+  box-shadow: 0 25px 70px rgba(42, 43, 36, .20);
+}
+.is-ivory .adv-on-note { color: #845641; background: #f6ece3; }
+.is-ivory .mode-switch button.active { color: white; background: var(--iv-deep); }
+
+/* BYOK details, status feedback, preview notes and documentation drawers. */
+.is-ivory .llm-custom, .is-ivory .llm-deep, .is-ivory .mode-switch button {
+  color: #303835;
+  background: #f3efe6;
+  border: 1px solid #d4ccbf;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .llm-custom summary { color: #555e55; }
+.is-ivory .llm-custom summary:hover { color: #95533b; }
+.is-ivory .llm-foot { border-color: #d3cabd; }
+.is-ivory .llm-clear, .is-ivory .llm-disable, .is-ivory .llm-close {
+  color: #303835;
+  background: #faf7f0;
+  border: 1px solid #c9c0b3;
+  border-radius: 0;
+}
+.is-ivory .llm-disable { color: #a24e41; border-color: #d5b5ab; }
+.is-ivory .llm-on {
+  color: #40704e;
+  background: #ebf2e9;
+  border: 1px solid #b6cbb6;
+  border-radius: 0;
+}
+.is-ivory .llm-bound-ok { color: #447654; }
+.is-ivory .llm-anchor { color: #936646; }
+.is-ivory .llm-bind-status.busy { color: #875a37; }
+.is-ivory .llm-bind-status.ok { color: #457454; }
+.is-ivory .llm-bind-status.error { color: #a24c42; }
+.is-ivory .adv-btn.on {
+  border-color: #bb856e;
+  color: #965339;
+  background: #f1e6db;
+  box-shadow: none;
+}
+.is-ivory .adv-dot.ok { background: #5b8768; box-shadow: none; }
+.is-ivory .mode-switch button.active { background: #303835; border-color: #303835; color: #fffaf2; box-shadow: none; }
+.is-ivory .ai-tag {
+  border: 1px solid #bf967c;
+  background: #efe4d7;
+  color: #96583e;
+  border-radius: 0;
+}
+.is-ivory .ai-note {
+  background: #f7efe3;
+  border: 1px solid #d6c5b4;
+  border-left: 3px solid #b77a58;
+  border-radius: 0;
+  color: #685c4d;
+}
+.is-ivory .ai-note b { color: #95563c; }
+.is-ivory .ai-note .ai-comment { color: #4e594f; }
+.is-ivory .ai-note .ai-warn { color: #9e5140; }
+.is-ivory .manual-head { color: #303835; }
+.is-ivory .manual-head:hover { background: #f1ece2; border-color: #b98e74 !important; }
+.is-ivory .manual-title small { color: #757b71; }
+.is-ivory .manual-peek {
+  background: #f9f6ee;
+  border: 1px solid #d2cbbf;
+  color: #697269;
+}
+.is-ivory .manual-tab.active {
+  background: #303835;
+  border-color: #303835 !important;
+  color: #fffaf2;
+  box-shadow: none;
+}
+.is-ivory .manual-tab.active i { color: #dfc2ae; }
+.is-ivory .manual-page h4 { color: #92533b; }
+.is-ivory .manual-page code { color: #854d35; background: #efe8dd; }
+.is-ivory .manual-tiers > div {
+  background: #f2eee5;
+  border: 1px solid #d2c9bc;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .manual-tiers b { color: #92583d; }
+.is-ivory .manual-tiers em { color: #72796e; }
+.is-ivory .manual-tip { background: #f5ece1; border-left-color: #b57958; }
+.is-ivory .grow .exp-bar { background: #e6dfd3; border-radius: 0; }
+.is-ivory .grow .exp-bar div { background: linear-gradient(90deg, #72917d, #bb886a); }
+.is-ivory .grow .task {
+  background: #f6f2e9;
+  border: 1px solid #d8cfc1;
+  border-radius: 0;
+  color: #303835;
+}
+.is-ivory .grow .task button {
+  background: #faf8f2;
+  border: 1px solid #c9c1b4;
+  border-radius: 0;
+  color: #4d574e;
+}
+.is-ivory .grow .task button:hover:not(:disabled) { color: #99553b; border-color: #b78265; }
+.is-ivory .grow .task-xp { color: #a06345; }
+
+/* Archive and inventory: preserve actual quality colors on collectible cards. */
+.is-ivory .collection-item, .is-ivory .warehouse-empty {
+  background: #fcfaf5;
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  color: var(--iv-ink);
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .collection-item:hover { border-color: var(--q-color, #a75f43); }
+.is-ivory .ci-name { color: #353a34; }
+.is-ivory .ci-meta { color: #747b72; }
+.is-ivory .vault-tab {
+  background: #fbf9f4;
+  border: 1px solid var(--iv-edge);
+  color: var(--iv-muted);
+  box-shadow: none;
+  font-family: var(--font-pixel);
+}
+.is-ivory .vault-tab.sel { background: var(--iv-deep); border-color: var(--iv-deep); color: #fffaf3; }
+.is-ivory .vault-tab:hover:not(.sel) { border-color: var(--iv-rust); color: var(--iv-ink); }
+.is-ivory :is(.inv-wallet, .inv-item, .shop-card, .pet-item, .inv-ledger li, .pet-items) {
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  background: #fbf9f4;
+  color: var(--iv-ink);
+  box-shadow: none;
+}
+.is-ivory .inv-wallet { border-left: 3px solid var(--iv-rust); }
+.is-ivory .inv-icon {
+  background: #f1ecdf;
+  border: 1px solid #d2cabe;
+  border-radius: 0;
+}
+.is-ivory .inv-coin { font-family: var(--font-pixel); color: var(--iv-ink); }
+.is-ivory .inv-wallet-note, .is-ivory .inv-item-main b, .is-ivory .pet-item-name { color: var(--iv-ink); }
+.is-ivory .inv-count, .is-ivory .pet-item-count { color: #9b5b42; font-family: var(--font-arcade); }
+.is-ivory .inv-msg { color: #477e58; }
+.is-ivory .inv-h { border-color: var(--iv-edge); }
+.is-ivory .shop-buy .primary-btn { min-height: 34px; }
+.is-ivory .warehouse-empty p { color: var(--iv-muted); }
+
+/* Rankings: crisp editorial list, not dark RPG rows. */
+.is-ivory .leaderboard { max-width: 1130px; padding: 27px clamp(16px, 3vw, 42px) 60px; }
+.is-ivory .lb-head { text-align: left; border-bottom: 2px solid var(--iv-deep); padding-bottom: 22px; margin: 0 0 20px; }
+.is-ivory .lb-head h2 { color: var(--iv-ink); font: 800 clamp(25px, 3vw, 34px)/1.2 var(--font-pixel); letter-spacing: -.035em; }
+.is-ivory .lb-sub { color: var(--iv-muted); }
+.is-ivory .lb-controls { justify-content: flex-start; gap: 8px; }
+.is-ivory .lb-seg {
+  background: #f9f7f1;
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+}
+.is-ivory .lb-seg button { color: var(--iv-muted); font-family: var(--font-pixel); }
+.is-ivory .lb-seg button.active { background: var(--iv-deep); color: white; }
+.is-ivory .lb-lang { background: #fffefa; color: var(--iv-ink); border: 1px solid var(--iv-edge); border-radius: 0; }
+.is-ivory .lb-row {
+  background: #faf8f2;
+  border: 1px solid var(--iv-edge);
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .lb-row:hover { border-color: #ad8b76; border-left-color: var(--iv-rust); transform: none; }
+.is-ivory .lb-rank {
+  background: #eae4d9;
+  border: 1px solid #d0c8bb;
+  color: #4a534d;
+  border-radius: 0;
+}
+.is-ivory .lb-repo { color: var(--iv-ink); }
+.is-ivory .lb-repo b { color: #9b5b41; }
+.is-ivory .lb-meta, .is-ivory .lb-cached { color: #727d75; }
+.is-ivory .lb-hot { color: #a66142; }
+.is-ivory .lb-hatch, .is-ivory .lb-view {
+  min-height: 38px;
+  border: 1px solid var(--iv-deep);
+  border-radius: 0;
+  background: var(--iv-deep);
+  color: white;
+  font: 700 12px/1.3 var(--font-pixel);
+  box-shadow: none;
+}
+.is-ivory .lb-view { background: #fdfaf3; color: var(--iv-ink); border-color: var(--iv-edge); }
+
+/* Training: coherent tile system with clear tool identity colors. */
+.is-ivory .training-stage { max-width: 1200px; padding: 26px clamp(16px, 3vw, 42px) 64px; }
+.is-ivory .training-head {
+  background: #fbf9f4;
+  border: 1px solid var(--iv-edge);
+  border-top: 4px solid var(--iv-deep);
+  border-radius: 0;
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .training-eyebrow { color: #9c583d; font-family: var(--font-arcade); }
+.is-ivory .training-title h2 {
+  color: var(--iv-ink);
+  font: 800 clamp(23px, 3vw, 34px)/1.2 var(--font-pixel);
+  letter-spacing: -.03em;
+}
+.is-ivory .training-counter { border: 1px solid var(--iv-edge); border-radius: 0; background: #f1ede4; }
+.is-ivory .training-counter b { font-family: var(--font-arcade); color: #a36348; }
+.is-ivory .tool-card {
+  background: #fbf9f4;
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  box-shadow: var(--iv-shadow);
+}
+.is-ivory .tool-card:hover { border-color: var(--tool-color, #a75f43); }
+.is-ivory .tool-badge { border-radius: 0; box-shadow: none; }
+.is-ivory .tool-main { color: var(--iv-ink); }
+.is-ivory .tool-meta { color: #9a6046; }
+.is-ivory .tool-cta { border: 1px solid var(--iv-edge); background: #f3eee4; border-radius: 0; color: var(--iv-ink); }
+.is-ivory .tool-foot { border-color: var(--iv-edge); background: #f4efe6; color: var(--iv-muted); }
+.is-ivory .tool-done { color: #477a58; }
+
+/* Quests: compact mission board, still uses existing task mutations. */
+.is-ivory .quest-wrap { max-width: 1160px; padding: 28px clamp(16px, 3vw, 40px) 64px; }
+.is-ivory :is(.quest-hero, .quest-panel) {
+  background: var(--iv-surface);
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  color: var(--iv-ink);
+  filter: none;
+  box-shadow: none;
+}
+.is-ivory .quest-hero { border-top: 4px solid var(--iv-deep); }
+.is-ivory .quest-hero h2 { color: var(--iv-ink); font: 800 clamp(25px, 3vw, 34px)/1.2 var(--font-pixel); letter-spacing: -.035em; }
+.is-ivory .quest-kicker { background: #f0e2d5; border: 1px solid #d3b39a; color: #98573b; font-family: var(--font-arcade); }
+.is-ivory .quest-quota span, .is-ivory .quest-msg {
+  background: #f4efe7;
+  border: 1px solid var(--iv-edge);
+  color: var(--iv-ink);
+}
+.is-ivory .quest-h { color: var(--iv-ink); font-weight: 700; border-color: var(--iv-edge); }
+.is-ivory .quest-h em { color: var(--iv-muted); }
+.is-ivory .quest-btn {
+  background: var(--iv-deep);
+  border: 1px solid var(--iv-deep);
+  color: #fffaf2;
+  font-family: var(--font-pixel);
+  box-shadow: none;
+}
+.is-ivory .quest-btn.ghost { background: #fdfaf3; border-color: var(--iv-edge); color: var(--iv-ink); }
+.is-ivory .quest-btn:hover:not(:disabled) { filter: none; background: #a75f43; border-color: #a75f43; color: white; }
+.is-ivory :is(.quest-run, .quest-target, .quest-history li, .quest-evidence li) {
+  background: #fbf9f4;
+  border: 1px solid var(--iv-edge);
+  color: var(--iv-ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+.is-ivory .quest-run.is-passed, .is-ivory .quest-msg.ok { border-left: 3px solid #5c8a67; color: #426d52; }
+.is-ivory .quest-run.is-failed, .is-ivory .quest-msg.err { border-left: 3px solid #aa5845; color: #a14f3b; }
+.is-ivory .quest-run.is-partial { border-left: 3px solid #b08a4d; }
+.is-ivory .quest-repo { color: var(--iv-ink); }
+.is-ivory .quest-result, .is-ivory .quest-desc { color: var(--iv-muted); }
+
+/* Floating UI must still be readable with the new light canvas. */
+.is-ivory .preview-pop,
+.is-ivory .deskpet-picker,
+.is-ivory .story-toast,
+.is-ivory .adv-pop {
+  color: var(--iv-ink);
+  background: #fbf9f4;
+  border: 1px solid var(--iv-edge);
+  border-radius: 0;
+  box-shadow: 0 24px 64px rgba(42, 45, 38, .21);
+}
+.is-ivory .preview-title { color: var(--iv-ink); }
+.is-ivory .preview-close, .is-ivory .llm-close { color: var(--iv-ink); }
+.is-ivory .preview-note { color: var(--iv-muted); }
+.is-ivory .preview-backdrop { background: rgba(40, 45, 41, .5); }
+.is-ivory .deskpet-bubble {
+  background: #fffdf6;
+  border: 1px solid #c8bfae;
+  color: #353b35;
+  box-shadow: 0 12px 22px rgba(36, 42, 34, .14);
+}
+.is-ivory .deskpet-card { background: #fffaf2; border-color: var(--iv-edge); color: var(--iv-ink); }
+.is-ivory .deskpet-card.sel { border-color: var(--iv-rust); }
+.is-ivory .deskpet-picker-label { color: var(--iv-muted); }
+
+/* Tight screens: keep navigation and all actions reachable. */
+@media (max-width: 1100px) {
+  .is-ivory:not(.is-command-deck) .topbar-inner { gap: 8px; flex-wrap: wrap; padding: 8px 16px 0; }
+  .is-ivory:not(.is-command-deck) .nav { flex-basis: 100%; order: 3; overflow-x: auto; }
+  .is-ivory:not(.is-command-deck) .nav-tab { height: 42px; padding-inline: 12px; }
+}
+@media (max-width: 640px) {
+  .is-ivory > main:not(.home--stage) { padding: 16px 13px 38px; }
+  .is-ivory .topbar-back-row { padding: 10px 13px 0; }
+  .is-ivory .settings-wrap { padding: 16px 13px 38px; }
+  .is-ivory .auth-card { padding: 20px 16px; }
+  .is-ivory .training-stage, .is-ivory .leaderboard, .is-ivory .quest-wrap { padding: 16px 13px 42px; }
+  .is-ivory .input-row { min-width: 0; }
+  .is-ivory .input-row input { min-width: 0; }
+  .is-ivory .vault-tabs { gap: 6px; }
+  .is-ivory .vault-tab { padding: 8px 12px; }
+  .is-ivory .lb-row { flex-wrap: wrap; gap: 9px; }
+  .is-ivory .lb-acts { margin-left: auto; }
+  .is-ivory .hero { padding: 19px; }
+  .is-ivory .auth-points { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-ivory .tool-card,
+  .is-ivory .lb-row,
+  .is-ivory .collection-item,
+  .is-ivory .primary-btn,
+  .is-ivory .ghost-btn,
+  .is-ivory .quest-btn { animation: none !important; transition: none !important; }
+}

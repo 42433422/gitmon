@@ -52,10 +52,28 @@ import './game-theme.css'
 import './training.css'
 import './vault.css'
 import './quest.css'
+import './home/ivory-terminal.css'
+import './ivory-system.css'
+import './ivory-scenes.css'
 
 const packKey = (pet) => pet.id || pet.fullName
 
 // 单个项目：一个卡包
+// 所有一方页面复用同一条战术终端路径标识，逻辑和导航仍沿用原状态机。
+const PAGE_SECTIONS = {
+  warehouse: { code: '02', zh: '精灵仓库', en: 'CREATURE VAULT' },
+  scan: { code: '01', zh: '仓库分析', en: 'REPOSITORY SCAN' },
+  box: { code: '03', zh: '卡箱档案', en: 'PACK ARCHIVE' },
+  reveal: { code: '04', zh: '精灵登场', en: 'CREATURE REVEAL' },
+  detail: { code: '05', zh: '档案详情', en: 'CREATURE DOSSIER' },
+  battle: { code: '06', zh: '竞技场', en: 'BATTLE TERMINAL' },
+  training: { code: '07', zh: '训练场', en: 'TRAINING TERMINAL' },
+  leaderboard: { code: '08', zh: '排行榜', en: 'LEADERBOARD' },
+  quest: { code: '09', zh: '任务板', en: 'MISSION BOARD' },
+  settings: { code: '10', zh: '设置', en: 'SYSTEM SETTINGS' },
+  story: { code: '11', zh: '剧情模式', en: 'STORY TERMINAL' },
+}
+
 const STEPS = {
   zh: ['连接仓库', '读取技术栈', '估算工程量', '评估代码质量'],
   en: ['Connect repo', 'Read tech stack', 'Estimate size', 'Assess code quality'],
@@ -1267,7 +1285,7 @@ export default function App() {
   const storyReady = storyBinding && storyKey && storyCast.length > 0
 
   return (
-    <div className={`app${view === 'pack' ? ' is-packing' : ''}`}>
+    <div className={`app is-ivory is-view-${view}${view === 'pack' ? ' is-packing' : ''}${view === 'home' ? ' is-command-deck' : ''}`}>
       {storyNotice && (
         <button className="story-toast" onClick={() => setStoryNotice('')}>{storyNotice}</button>
       )}
@@ -1376,6 +1394,15 @@ export default function App() {
           <button className="topbar-back" onClick={goBack} title={t('返回', 'Back')}>{t('← 返回', '← Back')}</button>
         </div>
       )}
+      {PAGE_SECTIONS[view] && (
+        <div className="ivory-route-strip" aria-hidden="true">
+          <span className="ivory-route-mark">G / M</span>
+          <span>OPERATIONS</span>
+          <em>{PAGE_SECTIONS[view].code}</em>
+          <b>{t(PAGE_SECTIONS[view].zh, PAGE_SECTIONS[view].en)}</b>
+          <span className="ivory-route-right">GITMON / ARCHIVE TERMINAL</span>
+        </div>
+      )}
 
       {view === 'boot' && (
         <main className="auth-page">
@@ -1396,7 +1423,16 @@ export default function App() {
       {view === 'home' && (
         <main className="home home--stage">
           <div className="home-stage-hero">
+            <div className="command-masthead" aria-hidden="true">
+              <span className="command-mark">G / 00</span>
+              <span className="command-masthead-copy">{t('档案室 / 作战终端', 'ARCHIVE / OPERATIONS TERMINAL')}</span>
+              <span className="command-masthead-status"><i />{t('系统在线', 'SYSTEM ONLINE')}</span>
+            </div>
             <HomeStage pet={stagePet} accent={stageAccent} />
+            <div className="command-stage-readout" aria-hidden="true">
+              <span>{t('中央展示 / 动态精灵', 'CENTRAL DISPLAY / CREATURE')}</span>
+              <b>THREE.JS / 2.5D</b>
+            </div>
             <div className="home-stage-layout">
           {auth.profile?.authenticated ? (
             <section className="account-hero home-panel">
@@ -1549,9 +1585,48 @@ export default function App() {
             </p>
           </section>
           )}
+              <aside className="command-menu" aria-label={t('快捷功能', 'Quick operations')}>
+                <div className="command-menu-heading">
+                  <span>{t('行动模块', 'OPERATIONS')}</span>
+                  <small>01 / 05</small>
+                </div>
+                <button type="button" className="command-menu-tile is-featured" onClick={() => openArena()} disabled={!canBattle}>
+                  <span className="command-menu-index">01 / ARENA</span>
+                  <span className="command-menu-title">{t('竞技场', 'Arena')} <em aria-hidden="true">↗</em></span>
+                  <span className="command-menu-detail">{t('部署精灵 · 进入战斗', 'Deploy your creature · Battle')}</span>
+                </button>
+                <button type="button" className="command-menu-tile" onClick={() => document.getElementById('collection')?.scrollIntoView({ behavior: 'auto', block: 'start' })}>
+                  <span className="command-menu-index">02 / ARCHIVE</span>
+                  <span className="command-menu-title">{t('精灵图鉴', 'Creature Archive')} <em aria-hidden="true">↗</em></span>
+                  <span className="command-menu-detail">{t('浏览你的仓库收藏', 'Browse your repository collection')}</span>
+                </button>
+                <button type="button" className="command-menu-tile" onClick={() => navGo('training')}>
+                  <span className="command-menu-index">03 / TRAINING</span>
+                  <span className="command-menu-title">{t('训练场', 'Training')} <em aria-hidden="true">↗</em></span>
+                  <span className="command-menu-detail">{t('训练与能力成长', 'Training and progression')}</span>
+                </button>
+                <button type="button" className="command-menu-tile" onClick={() => navGo('quest')}>
+                  <span className="command-menu-index">04 / MISSIONS</span>
+                  <span className="command-menu-title">{t('任务', 'Missions')} <em aria-hidden="true">↗</em></span>
+                  <span className="command-menu-detail">{t('查看任务与奖励', 'View tasks and rewards')}</span>
+                </button>
+                <button type="button" className="command-menu-tile" onClick={() => { if (storyReady) { sfx.swoosh(); bgm.unlock(); unlockTts(); setView('story') } else { sfx.blip(); setStoryGate(true) } }}>
+                  <span className="command-menu-index">05 / STORY</span>
+                  <span className="command-menu-title">{t('剧情', 'Story')} <em aria-hidden="true">↗</em></span>
+                  <span className="command-menu-detail">{t('探索精灵世界的故事', 'Explore the creature world')}</span>
+                </button>
+                <div className="command-menu-footer"><span>GITMON / TACTICAL OS</span><span>ONLINE</span></div>
+              </aside>
             </div>
           </div>
           <div className="home-body">
+            <div className="command-archive-head">
+              <div>
+                <span className="command-eyebrow">ARCHIVE / 02</span>
+                <h2>{t('精灵档案', 'Creature Archive')}</h2>
+              </div>
+              <p>{t('仓库化为精灵，每个项目都有自己的档案。', 'Every repository has a creature, and every creature has a record.')}</p>
+            </div>
 
           {/* 云图鉴：云账号的仓库卡（PR#2）；本地图鉴走原来的收藏列表 */}
           {cloudAccount && (
